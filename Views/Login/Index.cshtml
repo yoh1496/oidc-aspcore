@@ -1,0 +1,38 @@
+﻿@model oidc_aspcore.Models.LoginViewModel
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="container py-5">
+  <h1 class="display-4">Login</h1>
+  <div class="card">
+
+    <div class="card-body">
+      @using (Html.BeginForm(null,null,FormMethod.Post, new {enctype="multipart/form-data"}))
+      {
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.loginId)
+          @Html.ValidationMessageFor(model => model.loginId, "", new {@class= "text-danger"})
+          @Html.TextBoxFor(model => model.loginId, (new { @class = "form-control"}))
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.password)
+          @Html.ValidationMessageFor(model => model.password, "", new {@class= "text-danger"})
+          @Html.PasswordFor(model => model.password, (new { @class = "form-control"}))
+        </div>
+
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">ログイン</button>
+        </div>
+
+        <div>
+          @Html.ValidationMessage("LoginError", new { @class = "text-danger"})
+        </div>
+
+      }
+    </div>
+  </div>
+</div>

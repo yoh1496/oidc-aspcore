@@ -1,17 +1,19 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using oidc_aspcore.Models;
 
 namespace oidc_aspcore.Controllers {
-    public class HomeController : Controller {
-        private readonly ILogger<HomeController> _logger;
+    [Authorize]
+    public class SecretController : Controller {
+        private readonly ILogger<SecretController> _logger;
 
-        public HomeController(ILogger<HomeController> logger) {
+        public SecretController(ILogger<SecretController> logger) {
             _logger = logger;
         }
 
